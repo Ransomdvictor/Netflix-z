@@ -38,11 +38,12 @@ jobs:
         id: build
         uses: docker/build-push-action@v6
         with:
-          push: true
-          tags: |
-            devictor17/Netflix-z:latest
-            devictor17/Netflix-z:${{ steps.tag.outputs.image_tag }}
-          outputs: type=image,push=true
+           context: .
+           push: true
+           tags: |
+             devictor17/netflix-z:latest
+             devictor17/netflix-z:${{ steps.tag.outputs.image_tag }}
+           outputs: type=image,push=true
 
   update-helm-chart:
     needs: docker
